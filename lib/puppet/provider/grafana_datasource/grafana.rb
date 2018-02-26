@@ -213,7 +213,7 @@ Puppet::Type.type(:grafana_datasource).provide(:grafana, parent: Puppet::Provide
       end
     else
       organization_id = fetch_organization[:id]
-      response = send_request 'POST', format('%s/user/using/%s', resource[:grafana_api_path], organization_id)
+      response = send_request('POST', format('%s/user/using/%s', resource[:grafana_api_path], organization_id))
       if response.code != '200'
         raise format('Failed to switch to org %s (HTTP response: %s/%s)', organization_id, response.code, response.body)
       end
